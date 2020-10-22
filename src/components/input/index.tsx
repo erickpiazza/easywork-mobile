@@ -72,7 +72,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
       <Icon
         name={icon}
         size={20}
-        color={isFocused || isFilled ? '#ff9000' : '#666360'}
+        color={isFocused || isFilled ? '#006bb3' : '#666360'}
       />
       <TextInput
         onFocus={handleInputFocus}

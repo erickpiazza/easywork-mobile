@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   font-size: 24px;
-  color: #f4ede8;
+  color: #006bb3;
   font-family: 'RobotoSlab-Medium';
   margin: 64px 0 24px;
 `;
@@ -20,9 +20,9 @@ export const BackToSignIn = styled.TouchableOpacity`
   left: 0;
   bottom: 0;
   right: 0;
-  background: #312e38;
+  background: #006bb3;
   border-top-width: 1px;
-  border-color: #232129;
+  border-color: #006bb3;
   padding: 16px 0;
 
   justify-content: center;
