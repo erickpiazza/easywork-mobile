@@ -1,13 +1,14 @@
 import React, {useCallback, useRef} from 'react';
 import {
-  Image,
   KeyboardAvoidingView,
   Platform,
   View,
   ScrollView,
   TextInput,
   Alert,
+  Image,
 } from 'react-native';
+// import {SvgCss} from 'react-native-svg';
 import Icon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
 import {Form} from '@unform/mobile';
@@ -17,7 +18,8 @@ import * as Yup from 'yup';
 import Button from '../../components/button';
 import Input from '../../components/input';
 
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/img.png';
+
 import {useAuth} from '../../hooks/auth';
 
 import {
@@ -86,7 +88,11 @@ const SignIn: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <Container>
-            <Image source={logoImg} />
+            <Image
+              style={{marginTop: 50, width: 250, height: 150}}
+              source={logoImg}
+            />
+
             <View>
               <Title>Faça seu Logon</Title>
             </View>
@@ -135,7 +141,7 @@ const SignIn: React.FC = () => {
       </KeyboardAvoidingView>
 
       <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>
-        <Icon name="log-in" size={20} color="#ff9000" />
+        <Icon name="log-in" size={20} color="#fff" />
         <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
       </CreateAccountButton>
     </>

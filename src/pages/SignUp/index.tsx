@@ -18,7 +18,7 @@ import api from '../../services/api';
 import Button from '../../components/button';
 import Input from '../../components/input';
 
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/img.png';
 
 import {Container, Title, BackToSignIn, BackToSignInText} from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -85,7 +85,10 @@ const SignUp: React.FC = () => {
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{flex: 1}}>
           <Container>
-            <Image source={logoImg} />
+            <Image
+              style={{marginTop: 50, width: 250, height: 150}}
+              source={logoImg}
+            />
             <View>
               <Title>Crie sua conta</Title>
             </View>
@@ -128,7 +131,7 @@ const SignUp: React.FC = () => {
               onPress={() => {
                 formRef.current?.submitForm();
               }}>
-              Entrar
+              Criar
             </Button>
           </Container>
         </ScrollView>
