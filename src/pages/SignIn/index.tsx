@@ -7,6 +7,7 @@ import {
   TextInput,
   Alert,
   Image,
+  Text,
 } from 'react-native';
 // import {SvgCss} from 'react-native-svg';
 import Icon from 'react-native-vector-icons/Feather';
@@ -94,6 +95,7 @@ const SignIn: React.FC = () => {
             />
 
             <View>
+              <Text>Easy Work</Text>
               <Title>Faça seu Logon</Title>
             </View>
 
