@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 
 import ProvidersList from '../pages/ProvidersList/index';
+import ProviderProfile from '../pages/ProviderProfile/index';
 import {useAuth} from '../../src/hooks/auth';
 
 const App = createBottomTabNavigator();
@@ -17,6 +18,11 @@ function ScreensHome() {
         options={{title: `Bem vindo ${user.name} `}}
         name="Search"
         component={ProvidersList}
+      />
+      <RoutersHome.Screen
+        options={{title: ''}}
+        name="ProviderProfile"
+        component={ProviderProfile}
       />
     </RoutersHome.Navigator>
   );
