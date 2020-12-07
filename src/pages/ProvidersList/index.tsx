@@ -1,14 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, Button, FlatList, TouchableOpacity} from 'react-native';
+import {Button, FlatList, TouchableOpacity, View} from 'react-native';
 import {useAuth} from '../../hooks/auth';
 import api from '../../services/api';
-import {Container, Image, ContainerListProvider} from './styles';
+import {
+  Container,
+  Image,
+  ContainerListProvider,
+  ContainerInformationProvider,
+  InformationProvider,
+} from './styles';
 import {useNavigation} from '@react-navigation/native';
+import NoCover from '../../assets/userNoCover.png';
 
 interface IListProviders {
   id: string;
   name: string;
   avatar_url: string;
+  cover_url: string;
 }
 
 const Home: React.FC = () => {
@@ -24,7 +32,6 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      <Text>Home</Text>
       <FlatList
         data={listProviders}
         renderItem={({item}) => (
@@ -33,22 +40,18 @@ const Home: React.FC = () => {
               onPress={() =>
                 navigation.navigate('ProviderProfile', {providerId: item.id})
               }>
-              <ContainerListProvider
-                // eslint-disable-next-line react-native/no-inline-styles
-                style={{
-                  shadowColor: '#000',
-                  shadowOffset: {
-                    width: 0,
-                    height: 1,
-                  },
-                  shadowOpacity: 0.1,
-                  shadowRadius: 1.22,
+              <ContainerListProvider>
+                <View style={{width: '30%'}}>
+                  {item.cover_url ? (
+                    <Image source={{uri: item.cover_url}} />
+                  ) : (
+                    <Image source={NoCover} />
+                  )}
+                </View>
 
-                  elevation: 3,
-                }}>
-                <Image source={{uri: item.avatar_url}} />
-                <Text>{item.name}</Text>
-                <Text>{item.id}</Text>
+                <ContainerInformationProvider>
+                  <InformationProvider>{item.name}</InformationProvider>
+                </ContainerInformationProvider>
               </ContainerListProvider>
             </TouchableOpacity>
           </>

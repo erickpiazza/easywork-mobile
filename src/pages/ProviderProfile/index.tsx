@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, TouchableOpacity, Linking} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -18,8 +18,14 @@ import {
   TextContent,
   ContainerEditImage,
   Image,
+  ContainerTextPhone,
+  IconPhone,
 } from './styles';
 import {RouteProp, useRoute} from '@react-navigation/native';
+
+import NoAvatar from '../../assets/userNoAvatar.png';
+import NoCover from '../../assets/userNoCover.png';
+import IconTeste from '../../assets/whatsappIcon.png';
 
 interface IListImage {
   id: string;
@@ -66,27 +72,55 @@ const ProviderProfile: React.FC = () => {
     });
   }, [route.params.providerId]);
 
+  function handleWhatsapp() {
+    Linking.openURL(
+      `whatsapp://send?phone=55${provider?.phone}&text=Olá ${provider?.name} visualizei seu perfil na plataforma Easy Work gostaria de saber mais sobre seus trabalhos`,
+    );
+  }
+
   return (
     <Container>
       <AvatarCoverWrapper>
         <View>
-          <Cover
-            source={{
-              uri: provider?.cover_url,
-            }}
-          />
+          {provider?.cover_url ? (
+            <Cover
+              source={{
+                uri: provider?.cover_url,
+              }}
+            />
+          ) : (
+            <Cover source={NoCover} />
+          )}
         </View>
 
         <AvatarWrapper>
-          <Avatar
-            source={{
-              uri: provider?.avatar_url,
-            }}
-          />
+          {provider?.avatar_url ? (
+            <Avatar
+              source={{
+                uri: provider?.avatar_url,
+              }}
+            />
+          ) : (
+            <Avatar source={NoAvatar} />
+          )}
         </AvatarWrapper>
       </AvatarCoverWrapper>
       <TextNameProvider>{provider?.name}</TextNameProvider>
-      <TextPhoneProvider>{provider?.phone}</TextPhoneProvider>
+      <ContainerTextPhone>
+        {provider?.phone ? (
+          <>
+            <TextPhoneProvider>{provider?.phone}19981694099</TextPhoneProvider>
+            <TouchableOpacity onPress={handleWhatsapp}>
+              <IconPhone source={IconTeste} />
+            </TouchableOpacity>
+          </>
+        ) : (
+          <>
+            <TextPhoneProvider>telefone não registrado </TextPhoneProvider>
+            <Icon name="phone-off" />
+          </>
+        )}
+      </ContainerTextPhone>
 
       <ContainerInformations>
         <TitleBox>Endereço</TitleBox>

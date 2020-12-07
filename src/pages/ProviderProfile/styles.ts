@@ -48,6 +48,13 @@ export const TextPhoneProvider = styled.Text`
   font-size: 14px;
   font-weight: bold;
   font-family: 'RobotoSlab-Regular';
+  margin-right: 12px;
+`;
+export const ContainerTextPhone = styled.View`
+  margin-top: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 `;
 
 export const ContainerInformations = styled.View`
@@ -65,6 +72,10 @@ export const BoxInformations = styled.View`
 export const Image = styled.Image`
   height: 140px;
   width: 140px;
+`;
+export const IconPhone = styled.Image`
+  height: 18px;
+  width: 18px;
 `;
 export const TitleBox = styled.Text`
   padding-left: 4px;
