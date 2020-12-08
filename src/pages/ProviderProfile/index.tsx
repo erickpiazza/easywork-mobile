@@ -25,7 +25,7 @@ import {RouteProp, useRoute} from '@react-navigation/native';
 
 import NoAvatar from '../../assets/userNoAvatar.png';
 import NoCover from '../../assets/userNoCover.png';
-import IconTeste from '../../assets/whatsappIcon.png';
+import IconWhats from '../../assets/whatsappIcon.png';
 
 interface IListImage {
   id: string;
@@ -109,9 +109,9 @@ const ProviderProfile: React.FC = () => {
       <ContainerTextPhone>
         {provider?.phone ? (
           <>
-            <TextPhoneProvider>{provider?.phone}19981694099</TextPhoneProvider>
+            <TextPhoneProvider>{provider?.phone}</TextPhoneProvider>
             <TouchableOpacity onPress={handleWhatsapp}>
-              <IconPhone source={IconTeste} />
+              <IconPhone source={IconWhats} />
             </TouchableOpacity>
           </>
         ) : (
