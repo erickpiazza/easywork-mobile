@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import api from '../../services/api';
 import {Avatar, InformationProvider} from './styles';
 import NoAvatar from '../../assets/userNoAvatar.png';
+import Geolocation from '@react-native-community/geolocation';
 
 interface IListProviders {
   id: string;
@@ -15,10 +16,20 @@ interface IListProviders {
   longitude: number;
 }
 
+interface ICoords {
+  latitude: number;
+  longitude: number;
+}
+
 const ProviderListMap: React.FC = () => {
   const navigation = useNavigation();
 
   const [listProviders, setListProviders] = useState<IListProviders[]>([]);
+  const [coords, setCoords] = useState<ICoords>({latitude: 0, longitude: 0});
+
+  useEffect(() => {
+    Geolocation.getCurrentPosition((info) => setCoords(info.coords));
+  }, []);
 
   useEffect(() => {
     api.get('providers').then((response) => {
@@ -30,13 +41,14 @@ const ProviderListMap: React.FC = () => {
     <MapView
       style={{flex: 1}}
       initialRegion={{
-        latitude: -22.930213,
-        longitude: -47.124883,
+        latitude: coords.latitude,
+        longitude: coords.longitude,
         latitudeDelta: 0.0143,
         longitudeDelta: 0.0134,
       }}
       showsUserLocation
-      loadingEnabled
+      loadingEnabled={true}
+      loadingBackgroundColor="#000000"
       zoomEnabled>
       {listProviders?.map((provider) => {
         return (

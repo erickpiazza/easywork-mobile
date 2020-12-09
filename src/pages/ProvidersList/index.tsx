@@ -82,7 +82,6 @@ const Home: React.FC = () => {
         )}
         numColumns={1}
       />
-      <Button title="sair" onPress={signOut} />
     </Container>
   );
 };
